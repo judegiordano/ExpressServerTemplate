@@ -1,7 +1,6 @@
 require("dotenv").config();
 const MongoClient = require("mongodb").MongoClient;
 
-// eslint-disable-next-line no-undef
 const { CONNECTION_STRING, DATABASE } = process.env;
 
 const connect = collection => {

@@ -1,7 +1,6 @@
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 
-// eslint-disable-next-line no-undef
 const { SALT } = process.env;
 
 const hash = string => {

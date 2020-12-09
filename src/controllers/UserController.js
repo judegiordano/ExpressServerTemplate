@@ -3,7 +3,6 @@ const pass = require("../utility/password");
 const collection = require("../utility/database").connect;
 
 let user;
-// eslint-disable-next-line no-undef
 collection(process.env.COLLECTION).then(r => {
 	if (!r) throw new Error("internal server error");
 	user = r;

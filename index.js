@@ -3,7 +3,6 @@ const app = require("./src/utility/server").app;
 const routes = require("./src/routes/index");
 const authenticateToken = require("./src/middleware/authenticateToken");
 
-// eslint-disable-next-line no-undef
 const PORT = process.env.PORT || 2020;
 
 app.use("/api/user/login", routes.login);
