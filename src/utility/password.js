@@ -1,7 +1,9 @@
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 
-const { SALT } = process.env;
+const {
+	SALT
+} = process.env;
 
 const hash = string => {
 	return new Promise((resolve, reject) => {

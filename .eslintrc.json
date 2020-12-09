@@ -12,7 +12,10 @@
         "indent": [
             "error",
             "tab"
-        ],
+		],
+		"no-trailing-spaces": [
+			"error"
+		],
         "linebreak-style": [
             "error",
             "windows"

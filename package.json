@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+	"lint": "eslint --fix --ext .js,.jsx .",
     "start": "node index.js",
     "test": "nodemon index.js"
   },

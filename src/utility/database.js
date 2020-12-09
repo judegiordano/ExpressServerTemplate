@@ -1,7 +1,10 @@
 require("dotenv").config();
 const MongoClient = require("mongodb").MongoClient;
 
-const { CONNECTION_STRING, DATABASE } = process.env;
+const {
+	CONNECTION_STRING,
+	DATABASE
+} = process.env;
 
 const connect = collection => {
 	// return pernding connection
