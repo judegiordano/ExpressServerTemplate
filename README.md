@@ -23,3 +23,6 @@ git commit -m "initial commit"
 git push heroku master
 heroku open
 ```
+```
+./node_modules/.bin/eslint --init
+```

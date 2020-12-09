@@ -1,5 +1,4 @@
 require("dotenv").config();
-const jwt = require("jsonwebtoken");
 const verify = require("../utility/jwt").verify;
 
 async function authenticateToken(req, res, next) {
@@ -23,6 +22,6 @@ async function authenticateToken(req, res, next) {
 		res.locals.jwt = null;
 		return next();
 	}
-};
+}
 
 module.exports = authenticateToken;

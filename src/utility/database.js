@@ -1,14 +1,15 @@
-require('dotenv').config();
-const MongoClient = require('mongodb').MongoClient;
+require("dotenv").config();
+const MongoClient = require("mongodb").MongoClient;
 
+// eslint-disable-next-line no-undef
 const { CONNECTION_STRING, DATABASE } = process.env;
 
 const connect = collection => {
 	// return pernding connection
 	return new Promise((resolve, reject) => {
-	  MongoClient.connect(CONNECTION_STRING, {
-		  useNewUrlParser: true,
-		  useUnifiedTopology: true
+		MongoClient.connect(CONNECTION_STRING, {
+			useNewUrlParser: true,
+			useUnifiedTopology: true
 		}).then(client => {
 			// connect to db
 			const db = client.db(DATABASE);

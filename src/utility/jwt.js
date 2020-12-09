@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 
 const sign = async (payload) => {
 	return new Promise((resolve, reject) => {
+		// eslint-disable-next-line no-undef
 		return resolve(jwt.sign(payload, process.env.JWT_SECRET, { expiresIn:
 			60 // one minute
 		})).catch(e => reject(e));
@@ -11,6 +12,7 @@ const sign = async (payload) => {
 
 const verify = async (token) => {
 	return new Promise((resolve, reject) => {
+		// eslint-disable-next-line no-undef
 		return resolve(jwt.verify(token, process.env.JWT_SECRET)).catch(e => reject(e));
 	});
 };
