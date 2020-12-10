@@ -7,10 +7,10 @@ const RandomUid = require("../utility/random");
  */
 class User {
 	constructor(user) {
-		this.guid = RandomUid(16);
+		this.guid = user.guid || RandomUid(16);
 		this.email = user.email;
 		this.password = user.password;
-		this.activated = false;
+		this.activated = user.activated || false;
 		this.created = user.created || new Date();
 		this.lastUpdated = user.lastUpdated || new Date();
 	}
