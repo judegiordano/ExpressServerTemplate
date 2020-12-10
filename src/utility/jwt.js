@@ -3,9 +3,10 @@ const jwt = require("jsonwebtoken");
 
 const sign = async (payload) => {
 	return new Promise((resolve, reject) => {
-		return resolve(jwt.sign(payload, process.env.JWT_SECRET, { expiresIn:
-			60 // one minute
-		})).catch(e => reject(e));
+		const token = jwt.sign(payload, process.env.JWT_SECRET, {
+			expiresIn: 60 // one minute
+		});
+		return resolve(token).catch(e => reject(e));
 	});
 };
 

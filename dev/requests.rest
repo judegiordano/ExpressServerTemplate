@@ -1,11 +1,11 @@
 POST http://localhost:2020/api/validate
-Authorization: Bearer token
+Authorization: Bearer {{$dotenv DEV_JWT}}
 
 ###
 POST http://localhost:2020/api/user/login HTTP/1.1
 content-type: application/json
 
 {
-	"username": "username",
-	"password": "password"
+	"username": "{{$dotenv DEV_USERNAME}}",
+	"password": "{{$dotenv DEV_PASSOWRD}}"
 }
