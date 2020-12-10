@@ -16,10 +16,6 @@
 		"no-trailing-spaces": [
 			"error"
 		],
-        "linebreak-style": [
-            "error",
-            "windows"
-        ],
         "quotes": [
             "error",
             "double"
