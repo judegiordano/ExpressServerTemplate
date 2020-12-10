@@ -1,15 +1,20 @@
 require("dotenv").config;
 const pass = require("../utility/password");
-const collection = require("../utility/database").connect;
+const collection = require("../utility/database");
 const User = require("../models/UserModel");
 
+// open database connection pooling
 let db;
-collection(process.env.COLLECTION).then(r => {
-	if (!r) throw new Error("internal server error");
-	db = r;
-}).catch(e => e);
+try {
+	collection(process.env.COLLECTION).then(context => {
+		return db = context;
+	});
+} catch (e) {
+	throw new Error(e);
+}
 
 class UserController {
+	// should the given credentials log in
 	async Login(login) {
 		const {
 			email,
@@ -25,14 +30,16 @@ class UserController {
 			const hash = await pass.compare(password, query.password);
 			if (!hash) throw new Error("wrong password");
 
-			return query;
+			const loggedIn = new User(query);
+			return loggedIn.data();
 		} catch (e) {
 			throw new Error(e);
 		}
 	}
 
+	// should a new user be registered
 	async Register(register) {
-		const {
+		let {
 			email,
 			password
 		} = register;
@@ -47,13 +54,16 @@ class UserController {
 		}
 
 		try {
-			const hash = await pass.hash(password);
+			const tempPass = await pass.hash(password);
 
-			const newUser = new User(email, hash);
+			const newUser = new User({
+				email: email,
+				password: tempPass
+			});
 
 			await db.insertOne(newUser.data());
 
-			return newUser.public();
+			return newUser.data();
 		} catch (e) {
 			throw new Error(e);
 		}

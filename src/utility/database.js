@@ -6,7 +6,7 @@ const {
 	DATABASE
 } = process.env;
 
-const connect = collection => {
+async function connect(collection) {
 	// return pernding connection
 	return new Promise((resolve, reject) => {
 		MongoClient.connect(CONNECTION_STRING, {
@@ -20,8 +20,6 @@ const connect = collection => {
 			return resolve(db.collection(collection));
 		}).catch(error => reject(error));
 	});
-};
+}
 
-module.exports = {
-	connect
-};
+module.exports = connect;

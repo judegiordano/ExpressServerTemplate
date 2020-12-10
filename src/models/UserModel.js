@@ -6,13 +6,13 @@ const RandomUid = require("../utility/random");
  * @param  {String} password Secure Hashed Password
  */
 class User {
-	constructor(email, password) {
+	constructor(user) {
 		this.guid = RandomUid(16);
-		this.email = email;
-		this.password = password;
+		this.email = user.email;
+		this.password = user.password;
 		this.activated = false;
-		this.created = new Date();
-		this.lastUpdated = new Date();
+		this.created = user.created || new Date();
+		this.lastUpdated = user.lastUpdated || new Date();
 	}
 	data() {
 		return {
@@ -22,14 +22,6 @@ class User {
 			activated: this.activated,
 			created: this.created,
 			lastUpdated: this.lastUpdated
-		};
-	}
-	public() {
-		return {
-			guid: this.guid,
-			email: this.email,
-			activated: this.activated,
-			created: this.created
 		};
 	}
 }
