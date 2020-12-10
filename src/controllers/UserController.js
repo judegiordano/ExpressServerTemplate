@@ -1,6 +1,7 @@
 require("dotenv").config;
 const pass = require("../utility/password");
 const collection = require("../utility/database").connect;
+const User = require("../models/UserModel");
 
 let db;
 collection(process.env.COLLECTION).then(r => {
@@ -11,15 +12,15 @@ collection(process.env.COLLECTION).then(r => {
 class UserController {
 	async Login(login) {
 		const {
-			username,
+			email,
 			password
 		} = login;
 
 		try {
 			const query = await db.findOne({
-				userName: username
+				email: email
 			});
-			if (!query) throw new Error("username not found");
+			if (!query) throw new Error("email not found");
 
 			const hash = await pass.compare(password, query.password);
 			if (!hash) throw new Error("wrong password");
@@ -32,30 +33,27 @@ class UserController {
 
 	async Register(register) {
 		const {
-			username,
+			email,
 			password
 		} = register;
 
 		try {
 			const query = await db.findOne({
-				userName: username
+				email: email
 			});
-			if (query) throw new Error("username taken");
+			if (query) throw new Error("email taken");
 		} catch (e) {
 			throw new Error(e);
 		}
 		try {
 			const hash = await pass.hash(password);
 
-			const insert = await db.insertOne({
-				userName: username,
-				password: hash,
-				created: new Date(),
-				lastUpdated: new Date(),
-				profile: "gray"
-			}).then(result => {
-				return result.ops[0];
-			});
+			const newUser = new User(email, hash);
+
+			const insert = await db.insertOne(newUser.data())
+				.then(result => {
+					return result.ops[0];
+				});
 
 			return insert;
 		} catch (e) {

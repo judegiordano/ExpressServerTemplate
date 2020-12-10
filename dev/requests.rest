@@ -6,7 +6,7 @@ POST http://localhost:2020/api/user/login HTTP/1.1
 content-type: application/json
 
 {
-	"username": "{{$dotenv DEV_USERNAME}}",
+	"email": "{{$dotenv DEV_USERNAME}}",
 	"password": "{{$dotenv DEV_PASSOWRD}}"
 }
 
@@ -15,6 +15,6 @@ POST http://localhost:2020/api/user/register HTTP/1.1
 content-type: application/json
 
 {
-	"username": "{{$dotenv DEV_NEW_USERNAME}}",
+	"email": "{{$dotenv DEV_NEW_USERNAME}}",
 	"password": "{{$dotenv DEV_NEW_PASSWORD}}"
 }

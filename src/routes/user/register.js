@@ -6,7 +6,7 @@ const UserController = require("../../controllers/UserController");
 const db = new UserController();
 
 router.post("/", async (req, res) => {
-	if (!req.body.password || !req.body.username) {
+	if (!req.body.password || !req.body.email) {
 		return res.status(500).send("missing user body");
 	}
 	try {
