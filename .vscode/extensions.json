@@ -5,6 +5,7 @@
 		"humao.rest-client",
 		"eamodio.gitlens",
 		"pkief.material-icon-theme",
-		"hookyqr.beautify"
+		"hookyqr.beautify",
+		"mongodb.mongodb-vscode"
 	]
 }
