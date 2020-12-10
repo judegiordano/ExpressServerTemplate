@@ -6,9 +6,14 @@ const {
 	DATABASE
 } = process.env;
 
+/**
+ * Open a new Mongodb connection pool
+ * @param {string} collection
+ */
 async function connect(collection) {
 	// return pernding connection
 	return new Promise((resolve, reject) => {
+		// open global MongoDb connection
 		MongoClient.connect(CONNECTION_STRING, {
 			useNewUrlParser: true,
 			useUnifiedTopology: true
