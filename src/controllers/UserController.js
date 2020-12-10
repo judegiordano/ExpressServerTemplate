@@ -45,17 +45,15 @@ class UserController {
 		} catch (e) {
 			throw new Error(e);
 		}
+
 		try {
 			const hash = await pass.hash(password);
 
 			const newUser = new User(email, hash);
 
-			const insert = await db.insertOne(newUser.data())
-				.then(result => {
-					return result.ops[0];
-				});
+			await db.insertOne(newUser.data());
 
-			return insert;
+			return newUser.public();
 		} catch (e) {
 			throw new Error(e);
 		}
