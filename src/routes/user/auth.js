@@ -7,7 +7,7 @@ router.post("/", async (req, res) => {
 		// if no token return not authorized
 		return res.status(401).send({
 			authorized: false,
-			error: "invalid jwt"
+			error: "invalid jwt",
 		});
 	}
 	// if success return jwt
