@@ -3,6 +3,7 @@ const app = require("./src/utility/server").app;
 const routes = require("./src/routes/index");
 const authenticateToken = require("./src/middleware/authenticateToken");
 
+// destructure env
 const PORT = process.env.PORT || 2020;
 
 // dynamically load routes
