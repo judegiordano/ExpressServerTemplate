@@ -7,7 +7,16 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Launch Program",
+			"name": "Cluster",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"program": "${workspaceFolder}\\cluster.js"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch Single Thread",
 			"skipFiles": [
 				"<node_internals>/**"
 			],
