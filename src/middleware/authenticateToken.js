@@ -1,4 +1,3 @@
-require("dotenv").config();
 const verify = require("../utility/jwt").verify;
 
 const authenticateToken = async (req, res, next) => {

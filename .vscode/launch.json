@@ -11,7 +11,11 @@
 			"skipFiles": [
 				"<node_internals>/**"
 			],
-			"program": "${workspaceFolder}\\cluster.js"
+			"program": "${workspaceFolder}\\cluster.js",
+			"resolveSourceMapLocations": [
+				"${workspaceFolder}/**",
+				"!**/node_modules/**"
+			]
 		},
 		{
 			"type": "node",
@@ -20,7 +24,11 @@
 			"skipFiles": [
 				"<node_internals>/**"
 			],
-			"program": "${workspaceFolder}\\index.js"
+			"program": "${workspaceFolder}\\index.js",
+			"resolveSourceMapLocations": [
+				"${workspaceFolder}/**",
+				"!**/node_modules/**"
+			]
 		}
 	]
 }

@@ -11,7 +11,7 @@ JWT_SECRET<varchar>
 CONNECTION_STRING<varchar>
 DATABASE<varchar>
 COLLECTION<varchar>
-IS_PROD<boolean>
+NODE_ENV<string>
 ```
 
 ```sh

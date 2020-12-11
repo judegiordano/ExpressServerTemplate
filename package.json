@@ -3,15 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "10.x"
+  },
   "scripts": {
     "lint": "eslint --fix --ext .js,.jsx .",
-	"start": "node index.js",
-	"cluster": "node cluster.js",
+    "start": "node index.js",
+    "cluster": "node cluster.js",
     "test": "nodemon index.js"
   },
   "keywords": [],
   "author": "jude giordano",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
@@ -23,7 +26,8 @@
     "helmet": "^4.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.3",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "eslint": "^7.15.0",

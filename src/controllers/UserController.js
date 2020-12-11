@@ -1,4 +1,3 @@
-require("dotenv").config;
 const pass = require("../utility/password");
 const User = require("../models/UserModel");
 

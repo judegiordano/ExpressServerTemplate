@@ -1,13 +1,9 @@
-require("dotenv").config();
 const bcrypt = require("bcrypt");
-
-const {
-	SALT
-} = process.env;
+const config = require("./config");
 
 const hash = string => {
 	return new Promise((resolve, reject) => {
-		bcrypt.hash(`${string}${SALT}`, 10, (err, hash) => {
+		bcrypt.hash(`${string}${config.SALT}`, 10, (err, hash) => {
 			if (err) return reject(err);
 			return resolve(hash);
 		});
@@ -16,7 +12,7 @@ const hash = string => {
 
 const compare = (string, hash) => {
 	return new Promise((resolve, reject) => {
-		bcrypt.compare(`${string}${SALT}`, hash, (err, result) => {
+		bcrypt.compare(`${string}${config.SALT}`, hash, (err, result) => {
 			if (err) return reject(err);
 			return resolve(result);
 		});

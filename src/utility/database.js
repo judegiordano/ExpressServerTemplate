@@ -1,9 +1,5 @@
-require("dotenv").config();
 const MongoClient = require("mongodb").MongoClient;
-
-const {
-	CONNECTION_STRING,
-} = process.env;
+const config = require("../utility/config");
 
 /**
  * Open a new Mongodb connection pool
@@ -11,7 +7,7 @@ const {
  */
 const connect = async () => {
 	return new Promise((resolve, reject) => {
-		MongoClient.connect(CONNECTION_STRING, {
+		MongoClient.connect(config.CONNECTION_STRING, {
 			useNewUrlParser: true,
 			useUnifiedTopology: true
 		}).then(client => {
