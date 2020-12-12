@@ -32,4 +32,7 @@ docker ps
 docker logs <container-id> -f
 docker stop <container-id>
 docekr rm <container-id>
+docker images
+docker image rm <image-id>
+docker pull mongo:latest
 ```

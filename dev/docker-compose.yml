@@ -1,0 +1,10 @@
+version: '3'
+services:
+  express-dev-app:
+    image: node:latest
+    container_name: express-dev-local
+    env_file:
+      - .env
+    ports:
+      - '3001:3000'
+    build: ../
