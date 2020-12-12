@@ -10,7 +10,7 @@
     "lint": "eslint --fix --ext .js,.jsx .",
     "start": "node index.js",
     "cluster": "node cluster.js",
-    "test": "nodemon index.js"
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "jude giordano",
@@ -27,13 +27,13 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.3",
     "morgan": "^1.10.0",
+    "nodemon": "^2.0.6",
     "winston": "^3.3.3"
   },
   "devDependencies": {
     "eslint": "^7.15.0",
     "husky": "^4.3.5",
     "lint-staged": "^10.5.3",
-    "nodemon": "^2.0.6",
     "prettier": "^2.2.1"
   },
   "husky": {

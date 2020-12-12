@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const config = {
-	PORT: process.env.PORT || 2020,
+	PORT: process.env.PORT || 3000,
 	CONNECTION_STRING: process.env.CONNECTION_STRING,
 	DATABASE: process.env.DATABASE,
 	COLLECTION: process.env.COLLECTION,
