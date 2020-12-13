@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const config = require("../utility/config");
 const logger = require("./logger");
 
-const connect = async () => {
+const connect = () => {
 	try {
 		mongoose.connect(config.CONNECTION_STRING, {
 			useNewUrlParser: true,

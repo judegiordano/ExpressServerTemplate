@@ -9,8 +9,6 @@ PORT<number>
 SALT<varchar>
 JWT_SECRET<varchar>
 CONNECTION_STRING<varchar>
-DATABASE<varchar>
-COLLECTION<varchar>
 NODE_ENV<string>
 ```
 
