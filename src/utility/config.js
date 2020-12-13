@@ -1,4 +1,5 @@
 require("dotenv").config();
+const slowDown = require("express-slow-down");
 
 const config = {
 	PORT: process.env.PORT || 3000,
@@ -11,7 +12,12 @@ const config = {
 	RATE_LIMIT: {
 		windowMs: 15 * 60 * 1000,
 		max: 100
-	}
+	},
+	speedLimiter: slowDown({
+		windowMs: 15 * 60 * 1000,
+		delayAfter: 50,
+		delayMs: 1000
+	})
 };
 
 module.exports = config;
