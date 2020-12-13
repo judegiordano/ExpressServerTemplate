@@ -25,6 +25,4 @@ app.use(cors({
 	allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
-module.exports = {
-	app
-};
+module.exports = app;

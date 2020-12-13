@@ -1,4 +1,4 @@
-const app = require("./src/utility/server").app;
+const app = require("./src/utility/server");
 const routes = require("./src/routes/index");
 const authenticateToken = require("./src/middleware/authenticateToken");
 const connect = require("./src/utility/database");
