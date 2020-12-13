@@ -6,20 +6,17 @@ const UserController = require("../../controllers/UserController");
 const db = new UserController();
 
 router.post("/", async (req, res) => {
-	const {
-		context
-	} = req.app.locals;
-	db.dbContext = context;
-
 	if (!req.body.password || !req.body.email) {
 		return res.status(500).send("missing user body");
 	}
 	try {
 		const user = await db.Register(req.body);
+
 		const jwt = await sign({
-			guid: user.guid,
+			_id: user._id,
 			email: user.email,
-			created: user.created
+			created: user.created,
+			activated: user.activated
 		});
 
 		res.status(200).send({

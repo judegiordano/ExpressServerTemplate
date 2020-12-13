@@ -2,19 +2,15 @@ const pass = require("../utility/password");
 const User = require("../models/UserModel");
 
 class UserController {
-	constructor(dbContext) {
-		this.dbContext = dbContext;
-	}
 
 	async Login(login) {
-		const db = this.dbContext;
 		const {
 			email,
 			password
 		} = login;
 
 		try {
-			const query = await db.findOne({
+			const query = await User.findOne({
 				email: email
 			});
 			if (!query) throw new Error("email not found");
@@ -22,25 +18,23 @@ class UserController {
 			const hash = await pass.compare(password, query.password);
 			if (!hash) throw new Error("wrong password");
 
-			const loggedIn = new User(query);
-			return loggedIn.data();
+			return query;
 		} catch (e) {
 			throw new Error(e);
 		}
 	}
 
 	async Register(register) {
-		const db = this.dbContext;
 		let {
 			email,
 			password
 		} = register;
 
 		try {
-			const query = await db.findOne({
+			const exists = await User.findOne({
 				email: email
 			});
-			if (query) throw new Error("email taken");
+			if (exists) throw new Error("email taken");
 		} catch (e) {
 			throw new Error(e);
 		}
@@ -53,8 +47,7 @@ class UserController {
 				password: tempPass
 			});
 
-			await db.insertOne(newUser.data());
-			return newUser.data();
+			return await newUser.save();
 		} catch (e) {
 			throw new Error(e);
 		}

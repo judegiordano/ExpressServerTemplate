@@ -19,7 +19,6 @@ const authenticateToken = async (req, res, next) => {
 		res.locals.jwt = null;
 		return next();
 	} catch (error) {
-
 		res.locals.jwt = null;
 		return next();
 	}
