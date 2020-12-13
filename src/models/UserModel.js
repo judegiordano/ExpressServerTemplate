@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
 const User = new mongoose.Schema({
+	_id: {
+		type: mongoose.Schema.Types.ObjectId
+	},
 	email: {
 		type: String,
 		required: true
@@ -20,8 +23,7 @@ const User = new mongoose.Schema({
 	lastUpdated: {
 		type: Date,
 		default: Date.now()
-	},
-
+	}
 }, {
 	collection: "User"
 });
