@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 app.use(cors({
-	origin: ["http://localhost:3001"],
+	origin: "*",
 	methods: ["GET", "POST"],
 	allowedHeaders: ["Content-Type", "Authorization"]
 }));
