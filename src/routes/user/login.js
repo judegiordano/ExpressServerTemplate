@@ -16,11 +16,11 @@ router.post("/", async (req, res) => {
 			_id: user._id,
 			email: user.email,
 			created: user.created,
-			activated: user.activated
+			activated: user.activated,
 		});
 
 		res.status(200).send({
-			token: jwt
+			token: jwt,
 		});
 	} catch (error) {
 		res.status(500).send(error.message);

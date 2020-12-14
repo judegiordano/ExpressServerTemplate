@@ -2,16 +2,12 @@ const pass = require("../utility/password");
 const User = require("../models/UserModel");
 
 class UserController {
-
 	async Login(login) {
-		const {
-			email,
-			password
-		} = login;
+		const { email, password } = login;
 
 		try {
 			const query = await User.findOne({
-				email: email
+				email: email,
 			});
 			if (!query) throw new Error("email not found");
 
@@ -25,14 +21,11 @@ class UserController {
 	}
 
 	async Register(register) {
-		let {
-			email,
-			password
-		} = register;
+		let { email, password } = register;
 
 		try {
 			const exists = await User.findOne({
-				email: email
+				email: email,
 			});
 			if (exists) throw new Error("email taken");
 		} catch (e) {
@@ -44,7 +37,7 @@ class UserController {
 
 			const newUser = new User({
 				email: email,
-				password: tempPass
+				password: tempPass,
 			});
 
 			return await newUser.save();

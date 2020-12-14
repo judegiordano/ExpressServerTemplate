@@ -1,15 +1,5 @@
-const {
-	createLogger,
-	format,
-	transports
-} = require("winston");
-
-const {
-	combine,
-	timestamp,
-	json,
-	prettyPrint
-} = format;
+const { createLogger, format, transports } = require("winston");
+const { combine, timestamp, json, prettyPrint } = format;
 
 const config = require("./config");
 
