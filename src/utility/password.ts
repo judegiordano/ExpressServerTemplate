@@ -3,7 +3,7 @@ import config from "./config";
 
 export const hash = async (string: string): Promise<string> => {
 	try {
-		const hash = await bcrypt.hash(`${string}${config.SALT}`, 10,);
+		const hash = await bcrypt.hash(`${string}${config.SALT}`, 10);
 		return hash;
 	} catch (e) {
 		throw new Error(e);
