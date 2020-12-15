@@ -17,4 +17,4 @@ ENV NODE_ENV=production
 # Build and run the app
 RUN npm ci --quiet --only=production
 EXPOSE 3000
-CMD [ "npm", "run", "cluster" ]
+CMD [ "npm", "run", "start" ]

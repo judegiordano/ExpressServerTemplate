@@ -12,8 +12,8 @@ const start = async (): Promise<void> => {
 		logger.error(`Failed to connect to server.\n${error}`);
 		process.exit(-1);
 	}
-	app.use("/api/user/login", config.limit, routes.login);
-	app.use("/api/user/register", config.limit, routes.register);
+	app.use("/api/user/login", config.LIMIT, routes.login);
+	app.use("/api/user/register", config.LIMIT, routes.register);
 	app.use("/api/user/validate", validate, routes.auth);
 	app.get("*", async (req, res) => {
 		res.status(404).send("Not Found");

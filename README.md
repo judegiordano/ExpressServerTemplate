@@ -21,7 +21,6 @@ npm run start
 ### Needed Environment Variables:
 ```
 PORT<number>
-SALT<varchar>
 JWT_SECRET<varchar>
 CONNECTION_STRING<varchar>
 NODE_ENV<string>
