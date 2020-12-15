@@ -1,14 +1,14 @@
-const express = require("express");
+import express, { Request, Response } from "express";
+import User from "@repos/UserRepository";
+import { sign } from "@util/jwt";
 const router = express.Router();
-const sign = require("../../utility/jwt").sign;
-const UserController = require("../../controllers/UserController");
+const db = new User();
 
-const db = new UserController();
-
-router.post("/", async (req, res) => {
+router.post("/", async (req: Request, res: Response): Promise<Response> => {
 	if (!req.body.password || !req.body.email) {
 		return res.status(500).send("missing user body");
 	}
+
 	try {
 		const user = await db.Login(req.body);
 
@@ -19,12 +19,12 @@ router.post("/", async (req, res) => {
 			activated: user.activated,
 		});
 
-		res.status(200).send({
+		return res.status(200).send({
 			token: jwt,
 		});
 	} catch (error) {
-		res.status(500).send(error.message);
+		return res.status(500).send(error.message);
 	}
 });
 
-module.exports = router;
+export default router;

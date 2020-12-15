@@ -1,8 +1,11 @@
-const pass = require("../utility/password");
-const User = require("../models/UserModel");
+import { hash, compare } from "@util/password";
+import User from "../models/UserModel";
+import ILogin from "../types/ILogin";
+import IUser from "../types/IUserData";
 
-class UserController {
-	async Login(login) {
+export default class UserRepository {
+
+	async Login(login: ILogin): Promise<IUser> {
 		const { email, password } = login;
 
 		try {
@@ -11,7 +14,7 @@ class UserController {
 			});
 			if (!query) throw new Error("email not found");
 
-			const hash = await pass.compare(password, query.password);
+			const hash = await compare(password, query.password);
 			if (!hash) throw new Error("wrong password");
 
 			return query;
@@ -20,8 +23,8 @@ class UserController {
 		}
 	}
 
-	async Register(register) {
-		let { email, password } = register;
+	async Register(register: ILogin): Promise<IUser> {
+		const { email, password } = register;
 
 		try {
 			const exists = await User.findOne({
@@ -33,7 +36,7 @@ class UserController {
 		}
 
 		try {
-			const tempPass = await pass.hash(password);
+			const tempPass = await hash(password);
 
 			const newUser = new User({
 				email: email,
@@ -46,5 +49,3 @@ class UserController {
 		}
 	}
 }
-
-module.exports = UserController;

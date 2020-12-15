@@ -1,6 +1,6 @@
-# ExpressServerTemplate
+# Ts Express API
 
-# This is Just an API, No Frontend
+## This is Just an API, No Frontend
 
 ### Needed Environment Variables:
 

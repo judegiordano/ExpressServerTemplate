@@ -1,8 +1,4 @@
-// Make sure you have the reccomended extensions installed
-// these request default to point to the dockerized app on
-// port 3001, launch.json will launch on 3000
-
-POST http://localhost:3000/api/validate
+POST http://localhost:3000/api/user/validate
 Authorization: Bearer {{$dotenv DEV_JWT}}
 
 ###

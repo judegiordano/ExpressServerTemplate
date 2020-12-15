@@ -1,1 +1,1 @@
-web: node cluster.js
+web: node dist/index.js

@@ -5,33 +5,16 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"type": "node",
+			"type": "pwa-node",
 			"request": "launch",
-			"name": "Launch Cluster",
-			"runtimeExecutable": "nodemon",
-			"restart": true,
+			"name": "Start Multi Thread",
 			"skipFiles": [
 				"<node_internals>/**"
 			],
-			"program": "${workspaceFolder}\\cluster.js",
-			"resolveSourceMapLocations": [
-				"${workspaceFolder}/**",
-				"!**/node_modules/**"
-			]
-		},
-		{
-			"type": "node",
-			"request": "launch",
-			"name": "Launch Single Thread",
-			"runtimeExecutable": "nodemon",
-			"restart": true,
-			"skipFiles": [
-				"<node_internals>/**"
-			],
-			"program": "${workspaceFolder}\\index.js",
-			"resolveSourceMapLocations": [
-				"${workspaceFolder}/**",
-				"!**/node_modules/**"
+			"preLaunchTask": "tsc: compile",
+			"program": "${workspaceFolder}/src/index.ts",
+			"outFiles": [
+				"${workspaceFolder}/dist/**/*.js"
 			]
 		}
 	]

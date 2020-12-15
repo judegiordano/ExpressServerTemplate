@@ -1,7 +1,7 @@
-const { createLogger, format, transports } = require("winston");
-const { combine, timestamp, json, prettyPrint } = format;
+import { createLogger, format, transports } from "winston";
+import config from "@util/config";
 
-const config = require("./config");
+const { combine, timestamp, json, prettyPrint } = format;
 
 const logger = createLogger({
 	level: "info",
@@ -31,4 +31,4 @@ if (config.NODE_ENV !== "production") {
 	}));
 }
 
-module.exports = logger;
+export default logger;

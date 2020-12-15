@@ -1,8 +1,8 @@
 version: '3'
 services:
-  express-dev-app:
+  ts-express-test:
     image: node:latest
-    container_name: express-dev-local
+    container_name: ts-container-local
     env_file:
       - .env
     ports:
