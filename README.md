@@ -1,9 +1,24 @@
 # Ts Express API
 
-## This is Just an API, No Frontend
-
+## Features
+* Multithreaded
+* Asynchronous
+* Database Connection Pooling
+* JWT Authentication
+* Password Hashing / Salting
+* CORS Enabled
+* Basic XSS / DDOS Prevention
+* Local Docker Image for Development
+---
+### Running Locally
+```sh
+git clone https://github.com/judegiordano/ExpressServerTemplate.git
+npm i
+npm run build
+npm run start
+```
+---
 ### Needed Environment Variables:
-
 ```
 PORT<number>
 SALT<varchar>
@@ -11,16 +26,7 @@ JWT_SECRET<varchar>
 CONNECTION_STRING<varchar>
 NODE_ENV<string>
 ```
-
-```sh
-git init
-heroku login -i
-heroku create my-app-name
-git add .
-git commit -m "initial commit"
-git push heroku master
-heroku open
-```
+---
 useful cmds
 ```
 ./node_modules/.bin/eslint --init
@@ -34,3 +40,4 @@ docker images
 docker image rm <image-id>
 docker pull mongo:latest
 ```
+---
