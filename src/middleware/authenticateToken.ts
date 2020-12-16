@@ -25,7 +25,7 @@ const authenticateToken: RequestHandler =
 				});
 			}
 
-			res.locals.jwt = null;
+			res.locals.jwt = payload;
 			return next();
 		} catch (e) {
 			res.locals.jwt = null;
