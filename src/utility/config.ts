@@ -9,12 +9,12 @@ const config = {
 	NODE_ENV: process.env.NODE_ENV ?? "development",
 	RATE_LIMIT: {
 		windowMs: 15 * 60 * 1000,
-		max: 100
+		max: 50
 	},
 	LIMIT: slowDown({
-		windowMs: 15 * 60 * 1000,
-		delayAfter: 50,
-		delayMs: 1000
+		windowMs: 60 * 60 * 1000, // every 1 hour
+		delayAfter: 15, // allow 15 requests
+		delayMs: 1000 // before slowing by 1000ms subsequently
 	})
 };
 

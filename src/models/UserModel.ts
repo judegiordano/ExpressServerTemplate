@@ -1,5 +1,5 @@
-import mongoose, { Document } from "mongoose";
-import IUser from "../types/IUserData";
+import mongoose from "mongoose";
+import IUser from "../types/entities/IUserData";
 
 const User = new mongoose.Schema(
 	{
@@ -29,4 +29,4 @@ const User = new mongoose.Schema(
 	}
 );
 
-export default mongoose.model<IUser & Document>("User", User);
+export default mongoose.model<IUser>("User", User);

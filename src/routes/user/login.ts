@@ -6,7 +6,7 @@ const db = new User();
 
 router.post("/", async (req: Request, res: Response): Promise<Response> => {
 	if (!req.body.password || !req.body.email) {
-		return res.status(500).send("missing user body");
+		return res.status(500).send({ ok: false, error: "missing user body" });
 	}
 
 	try {
@@ -16,14 +16,14 @@ router.post("/", async (req: Request, res: Response): Promise<Response> => {
 			_id: user._id,
 			email: user.email,
 			created: user.created,
-			activated: user.activated,
+			activated: user.activated
 		});
 
 		return res.status(200).send({
-			token: jwt,
+			token: jwt
 		});
-	} catch (error) {
-		return res.status(500).send(error.message);
+	} catch (e) {
+		return res.status(500).send({ ok: false, error: e.message });
 	}
 });
 

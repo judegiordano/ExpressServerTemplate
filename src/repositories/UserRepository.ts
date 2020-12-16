@@ -1,7 +1,7 @@
 import { hash, compare } from "@util/password";
 import User from "../models/UserModel";
 import ILogin from "../types/ILogin";
-import IUser from "../types/IUserData";
+import IUser from "../types/entities/IUserData";
 
 export default class UserRepository {
 
@@ -44,6 +44,29 @@ export default class UserRepository {
 			});
 
 			return await newUser.save();
+		} catch (e) {
+			throw new Error(e);
+		}
+	}
+
+	async UpdateEmail(id: string, email: string, newMail: string): Promise<IUser> {
+		try {
+			const user = await User.findOneAndUpdate({
+				$and: [
+					{ _id: id },
+					{ email: email },
+				]
+			}, {
+				$set: {
+					email: newMail,
+					lastUpdated: new Date
+				}
+			}, { new: false });
+
+			if (user === null || user === undefined) {
+				throw new Error("wrong user credentials");
+			}
+			return user;
 		} catch (e) {
 			throw new Error(e);
 		}
