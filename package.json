@@ -5,13 +5,13 @@
     "node": "14.15.1"
   },
   "description": "",
-  "main": "dist/index.js",
+  "main": "build/index.js",
   "scripts": {
     "prebuild": "eslint --fix --ext .ts,.tsx .",
     "postinstall": "npm run build",
     "build": "ttsc",
     "watch": "ttsc --watch",
-    "start": "node ./dist/index.js"
+    "start": "node ./build/index.js"
   },
   "keywords": [],
   "author": "jude giordano",

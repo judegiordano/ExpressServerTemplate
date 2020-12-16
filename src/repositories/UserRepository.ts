@@ -2,6 +2,7 @@ import { hash, compare } from "@util/password";
 import User from "../models/UserModel";
 import IUser from "../types/entities/IUserData";
 import { ILogin, IRegister, IUpdateEmail } from "../types/IUserActions";
+
 export default class UserRepository {
 
 	async Login(login: ILogin): Promise<IUser> {
