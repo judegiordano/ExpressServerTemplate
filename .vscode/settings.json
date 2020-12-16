@@ -2,7 +2,6 @@
 	"editor.detectIndentation": false,
 	"editor.tabSize": 4,
 	"editor.insertSpaces": false,
-	//"files.eol": "\n",
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true
 	},
