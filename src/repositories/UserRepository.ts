@@ -1,20 +1,17 @@
 import { hash, compare } from "@util/password";
 import User from "../models/UserModel";
-import ILogin from "../types/ILogin";
 import IUser from "../types/entities/IUserData";
-
+import { ILogin, IRegister, IUpdateEmail } from "../types/IUserActions";
 export default class UserRepository {
 
 	async Login(login: ILogin): Promise<IUser> {
-		const { email, password } = login;
-
 		try {
 			const query = await User.findOne({
-				email: email,
+				email: login.email,
 			});
 			if (!query) throw new Error("email not found");
 
-			const hash = await compare(password, query.password);
+			const hash = await compare(login.password, query.password);
 			if (!hash) throw new Error("wrong password");
 
 			return query;
@@ -23,12 +20,10 @@ export default class UserRepository {
 		}
 	}
 
-	async Register(register: ILogin): Promise<IUser> {
-		const { email, password } = register;
-
+	async Register(register: IRegister): Promise<IUser> {
 		try {
 			const exists = await User.findOne({
-				email: email,
+				email: register.email,
 			});
 			if (exists) throw new Error("email taken");
 		} catch (e) {
@@ -36,10 +31,10 @@ export default class UserRepository {
 		}
 
 		try {
-			const tempPass = await hash(password);
+			const tempPass = await hash(register.password);
 
 			const newUser = new User({
-				email: email,
+				email: register.email,
 				password: tempPass,
 			});
 
@@ -49,16 +44,16 @@ export default class UserRepository {
 		}
 	}
 
-	async UpdateEmail(id: string, email: string, newMail: string): Promise<IUser> {
+	async UpdateEmail(update: IUpdateEmail): Promise<IUser> {
 		try {
 			const user = await User.findOneAndUpdate({
 				$and: [
-					{ _id: id },
-					{ email: email },
+					{ _id: update.id },
+					{ email: update.email },
 				]
 			}, {
 				$set: {
-					email: newMail,
+					email: update.email,
 					lastUpdated: new Date
 				}
 			}, { new: false });

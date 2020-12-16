@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction, RequestHandler } from "express";
 import { verify } from "@util/jwt";
+import { IError } from "../types/IRoute";
 
 const authenticateToken: RequestHandler =
 	async (req: Request, res: Response, next: NextFunction): Promise<void | Response> => {
@@ -12,7 +13,7 @@ const authenticateToken: RequestHandler =
 			return res.status(401).send({
 				ok: false,
 				error: "invalid jwt",
-			});
+			} as IError);
 		}
 
 		try {
@@ -22,7 +23,7 @@ const authenticateToken: RequestHandler =
 				return res.status(500).send({
 					ok: false,
 					error: "invalid jwt",
-				});
+				} as IError);
 			}
 
 			res.locals.jwt = payload;
@@ -32,7 +33,7 @@ const authenticateToken: RequestHandler =
 			return res.status(500).send({
 				ok: false,
 				error: e.message,
-			});
+			} as IError);
 		}
 	};
 

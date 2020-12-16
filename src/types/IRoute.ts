@@ -5,5 +5,9 @@ interface IRoute {
 	res: Response,
 	next?: NextFunction
 }
+export interface IError {
+	ok: boolean,
+	error: string
+}
 
 export default IRoute;
