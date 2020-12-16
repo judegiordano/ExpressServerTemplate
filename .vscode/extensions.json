@@ -5,6 +5,7 @@
 		"humao.rest-client",
 		"eamodio.gitlens",
 		"pkief.material-icon-theme",
-		"coenraads.bracket-pair-colorizer-2"
+		"coenraads.bracket-pair-colorizer-2",
+		"oouo-diogo-perdigao.docthis"
 	]
 }
