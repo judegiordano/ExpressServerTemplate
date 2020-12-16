@@ -1,4 +1,10 @@
-interface IJWT {
+export interface IJwtPayload {
+	_id: string,
+	created: Date,
+	activated: boolean,
+	email: string
+}
+export interface IJWT {
 	_id: string,
 	created: Date,
 	activated: boolean,
@@ -8,5 +14,3 @@ interface IJWT {
 	issued: string,
 	expires: string
 }
-
-export default IJWT;

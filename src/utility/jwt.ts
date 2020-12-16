@@ -1,13 +1,12 @@
 import jwt from "jsonwebtoken";
 import config from "./config";
-import IPayload from "../types/IPayload";
-import IJWT from "../types/IJWT";
+import { IJWT, IJwtPayload } from "../types/IJWT";
 
 import dateFormat from "dateformat";
 
 const { JWT_SECRET } = config;
 
-export const sign = async (payload: IPayload): Promise<string> => {
+export const sign = async (payload: IJwtPayload): Promise<string> => {
 	try {
 		return jwt.sign(payload, JWT_SECRET, {
 			expiresIn: "7d"
@@ -31,7 +30,7 @@ export const verify = async (token: string): Promise<IJWT> => {
 			issued: dateFormat(new Date(parseInt(data.iat) * 1000), "yyyy-mm-dd h:MM:ss"),
 			expires: dateFormat(new Date(parseInt(data.exp) * 1000), "yyyy-mm-dd h:MM:ss")
 		} as IJWT;
-	} catch (error) {
-		throw new Error(error);
+	} catch (e) {
+		throw new Error(e);
 	}
 };
