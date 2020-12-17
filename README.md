@@ -1,4 +1,4 @@
-# <span style="color:lightgreen">Expresso API</span> ☕🚀
+# <span style="color:lightgreen">Expresso RESTful API</span> ☕💤🚀
 
 ## Features
 * Multithreaded
