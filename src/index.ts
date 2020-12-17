@@ -6,8 +6,7 @@ import start from "./services/startServer";
 
 if (cluster.isMaster && config.NODE_ENV === "production") {
 	const cpus = os.cpus().length;
-	const mem = os.totalmem();
-	logger.info(`Creating ${cpus} workers with ${mem} bytes of memory.`);
+	logger.info(`${cpus} slave clusters created`);
 	for (let i = 0; i < cpus; i++) {
 		cluster.fork();
 	}
