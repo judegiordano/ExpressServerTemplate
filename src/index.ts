@@ -12,7 +12,6 @@ if (cluster.isMaster && config.NODE_ENV === "production") {
 	}
 } else if (cluster.isMaster) {
 	start();
-	// implement more logic for master
 } else {
 	start();
 }
