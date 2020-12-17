@@ -22,3 +22,6 @@ jobs:
 
     - name: lint project
       run: npm run prebuild
+
+    - name: build
+      run: npm run postinstall
