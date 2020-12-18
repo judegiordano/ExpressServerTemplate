@@ -4,7 +4,7 @@ import compress from "koa-compress";
 import bodyParser from "koa-bodyparser";
 import ratelimit from "koa-ratelimit";
 import json from "koa-json";
-import cors from "@koa/cors";
+import cors from "koa-cors";
 import helmet from "koa-helmet";
 
 import log from "../services/logger";
