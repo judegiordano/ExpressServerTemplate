@@ -1,22 +1,10 @@
-import { hash, compare } from "@util/password";
 import User from "../models/UserModel";
-import IUser from "../types/entities/IUserData";
+import IUser from "../types/entities/IUser";
 import { ILogin, IRegister, IUpdateEmail } from "../types/IUserActions";
+import { compare, hash } from "../services/password";
 
-/**
- * User Repository Funcitons
- * @export
- * @class UserRepository
- */
 export default class UserRepository {
 
-	/**
-	 * Should a user log in
-	 * with the given credentials
-	 * @param {ILogin} login
-	 * @return {*}  {Promise<IUser>}
-	 * @memberof UserRepository
-	 */
 	async Login(login: ILogin): Promise<IUser> {
 		try {
 			const query = await User.findOne({
@@ -33,13 +21,6 @@ export default class UserRepository {
 		}
 	}
 
-	/**
-	 * Should a new user registere
-	 * with the given credentials
-	 * @param {IRegister} register
-	 * @return {*}  {Promise<IUser>}
-	 * @memberof UserRepository
-	 */
 	async Register(register: IRegister): Promise<IUser> {
 		try {
 			const exists = await User.findOne({
@@ -64,14 +45,6 @@ export default class UserRepository {
 		}
 	}
 
-	/**
-	 * Updates a user email
-	 * provided the correct jwt
-	 * credentials matches a user
-	 * @param {IUpdateEmail} update
-	 * @return {*}  {Promise<IUser>}
-	 * @memberof UserRepository
-	 */
 	async UpdateEmail(update: IUpdateEmail): Promise<IUser> {
 		try {
 			const user = await User.findOneAndUpdate({
@@ -81,7 +54,7 @@ export default class UserRepository {
 				]
 			}, {
 				$set: {
-					email: update.email,
+					email: update.newEmail,
 					lastUpdated: new Date
 				}
 			}, { new: false });

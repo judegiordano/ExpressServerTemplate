@@ -1,5 +1,4 @@
 import dotenv from "dotenv";
-import slowDown from "express-slow-down";
 dotenv.config();
 
 const config = {
@@ -10,12 +9,7 @@ const config = {
 	RATE_LIMIT: {
 		windowMs: 15 * 60 * 1000,
 		max: 50
-	},
-	LIMIT: slowDown({
-		windowMs: 60 * 60 * 1000, // every 1 hour
-		delayAfter: 15, // allow 15 requests
-		delayMs: 1000 // before slowing by 1000ms subsequently
-	})
+	}
 };
 
 if (!config.JWT_SECRET) {

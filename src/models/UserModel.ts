@@ -1,13 +1,8 @@
-import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
-import IUser from "../types/entities/IUserData";
+import IUser from "../types/entities/IUser";
 
 const User = new mongoose.Schema(
 	{
-		_id: {
-			type: ObjectId,
-			required: true
-		},
 		email: {
 			type: String,
 			required: true

@@ -1,15 +1,15 @@
 export interface ILogin {
-	email: string
+	email: string,
 	password: string
 }
 
 export interface IRegister {
-	email: string
+	email: string,
 	password: string
 }
 
 export interface IUpdateEmail {
 	id: string,
 	email: string,
-	newMail: string
+	newEmail: string
 }

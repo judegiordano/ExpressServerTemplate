@@ -1,10 +1,10 @@
 version: '3'
 services:
   ts-express-test:
-    image: node:latest
+    image: node:alpine
     container_name: ts-container-local
     env_file:
       - .env
     ports:
       - '3001:3000'
-    build: ../
+    build: ./

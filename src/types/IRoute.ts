@@ -1,13 +1,6 @@
-import { NextFunction, Request, Response } from "express";
-
-interface IRoute {
-	req: Request,
-	res: Response,
-	next?: NextFunction
-}
-export interface IError {
+export interface IErr {
 	ok: boolean,
-	error: string
+	status: number,
+	error: string,
+	raw?: string
 }
-
-export default IRoute;

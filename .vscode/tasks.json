@@ -3,7 +3,7 @@
 	"tasks": [
 		{
 			"type": "npm",
-			"script": "build",
+			"script": "postinstall",
 			"problemMatcher": [
 				"$tsc"
 			],
@@ -12,15 +12,6 @@
 				"isDefault": true
 			},
 			"label": "tsc: compile"
-		},
-		{
-			"type": "npm",
-			"script": "watch",
-			"problemMatcher": [
-				"$tsc-watch"
-			],
-			"group": "build",
-			"label": "tsc: watch"
 		}
 	]
 }

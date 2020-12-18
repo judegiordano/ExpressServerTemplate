@@ -12,7 +12,7 @@
 ---
 ### Running Locally
 ```sh
-git clone https://github.com/judegiordano/ExpressServerTemplate.git
+git clone
 npm i
 npm run build
 npm run start

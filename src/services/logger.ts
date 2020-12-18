@@ -1,5 +1,5 @@
 import { createLogger, format, transports } from "winston";
-import config from "@util/config";
+import config from "./config";
 
 const { combine, timestamp, json, prettyPrint } = format;
 

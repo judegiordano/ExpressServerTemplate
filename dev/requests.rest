@@ -1,20 +1,20 @@
-POST http://localhost:3000/api/jwt/decode
-Authorization: Bearer {{$dotenv DEV_JWT}}
+POST http://localhost:3000/api/user/validate
+Authorization: Bearer token
 
 ###
-POST http://localhost:3000/api/user/login HTTP/1.1
-content-type: application/json
+POST http://localhost:3000/api/user/login HTTP/1:1
+Content-Type: application/json
 
 {
-	"email": "{{$dotenv DEV_USERNAME}}",
-	"password": "{{$dotenv DEV_PASSOWRD}}"
+	"email": "",
+	"password": ""
 }
 
 ###
-POST http://localhost:3000/api/user/register HTTP/1.1
-content-type: application/json
+POST http://localhost:3000/api/user/register HTTP/1:1
+Content-Type: application/json
 
 {
-	"email": "{{$dotenv DEV_NEW_USERNAME}}",
-	"password": "{{$dotenv DEV_NEW_PASSWORD}}"
+	"email": "",
+	"password": ""
 }

@@ -1,29 +1,53 @@
-import express, { RequestHandler } from "express";
-import cors from "cors";
-import helmet from "helmet";
-import rateLimit from "express-rate-limit";
-import morgan from "morgan";
-import responseTime from "response-time";
-import compression from "compression";
-import bodyParser from "body-parser";
-import config from "@util/config";
+import Koa from "koa";
+import logger from "koa-logger";
+import compress from "koa-compress";
+import bodyParser from "koa-bodyparser";
+import ratelimit from "koa-ratelimit";
+import json from "koa-json";
+import cors from "@koa/cors";
+import helmet from "koa-helmet";
 
-const app = express();
-app.disable("x-powered-by");
-app.set("json spaces", 2);
-app.use(morgan("common") as RequestHandler);
-app.use(responseTime());
-app.use(helmet());
-app.use(rateLimit(config.RATE_LIMIT));
-app.use(bodyParser.json());
-app.use(compression());
-app.use(bodyParser.urlencoded({
-	extended: true
+import log from "../services/logger";
+import router from "../controllers";
+import { IErr } from "../types/IRoute";
+
+const app = new Koa();
+const map = new Map();
+app.use(async (ctx: Koa.Context, next: Koa.Next) => {
+	try {
+		await next();
+	} catch (e) {
+		log.error(e.message);
+		ctx.status = 500;
+		ctx.body = {
+			ok: false,
+			status: ctx.status,
+			error: e.message,
+			raw: e.toString()
+		} as IErr;
+	}
+});
+app.use(ratelimit({
+	driver: "memory",
+	db: map,
+	duration: 60000, // one minute
+	errorMessage: "Too Many Requests. Please Try Again later.",
+	id: (ctx) => ctx.ip,
+	headers: {
+		remaining: "Rate-Limit-Remaining",
+		reset: "Rate-Limit-Reset",
+		total: "Rate-Limit-Total"
+	},
+	max: 10,
+	disableHeader: false
 }));
-app.use(cors({
-	origin: "*",
-	methods: ["GET", "POST"],
-	allowedHeaders: ["Content-Type", "Authorization"]
-}) as RequestHandler);
+app.use(cors());
+app.use(json());
+app.use(logger());
+app.use(helmet());
+app.use(compress());
+app.use(bodyParser());
+app.use(router.routes());
+app.use(router.allowedMethods());
 
 export default app;

@@ -1,12 +1,25 @@
 import os from "os";
-import config from "./utility/config";
 import cluster from "cluster";
-import logger from "./services/logger";
-import start from "./services/startServer";
+import config from "./services/config";
+import log from "./services/logger";
+import app from "./services/server";
+import connect from "./services/database";
+
+const start = async (): Promise<void> => {
+	try {
+		await connect();
+	} catch (error) {
+		log.error(`Failed to connect to server.\n${error}`);
+		process.exit(-1);
+	}
+	app.listen(config.PORT, () => {
+		log.info(`server started at http://localhost:${config.PORT}`);
+	});
+};
 
 if (cluster.isMaster && config.NODE_ENV === "production") {
 	const cpus = os.cpus().length;
-	logger.info(`${cpus} slave clusters created`);
+	log.info(`${cpus} slave clusters created`);
 	for (let i = 0; i < cpus; i++) {
 		cluster.fork();
 	}
