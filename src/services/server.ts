@@ -30,7 +30,7 @@ app.use(async (ctx: Koa.Context, next: Koa.Next) => {
 app.use(ratelimit({
 	driver: "memory",
 	db: map,
-	duration: 60000, // one minute
+	duration: (60000 * 10), // 10 minutes
 	errorMessage: "Too Many Requests. Please Try Again later.",
 	id: (ctx) => ctx.ip,
 	headers: {
@@ -38,7 +38,7 @@ app.use(ratelimit({
 		reset: "Rate-Limit-Reset",
 		total: "Rate-Limit-Total"
 	},
-	max: 10,
+	max: 15,
 	disableHeader: false
 }));
 app.use(cors());
