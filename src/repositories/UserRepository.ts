@@ -5,7 +5,7 @@ import { compare, hash } from "../services/password";
 
 export default class UserRepository {
 
-	async Login(login: ILogin): Promise<IUser> {
+	public static async Login(login: ILogin): Promise<IUser> {
 		try {
 			const query = await User.findOne({
 				email: login.email,
@@ -21,7 +21,7 @@ export default class UserRepository {
 		}
 	}
 
-	async Register(register: IRegister): Promise<IUser> {
+	public static async Register(register: IRegister): Promise<IUser> {
 		try {
 			const exists = await User.findOne({
 				email: register.email,
@@ -45,7 +45,7 @@ export default class UserRepository {
 		}
 	}
 
-	async UpdateEmail(update: IUpdateEmail): Promise<IUser> {
+	public static async UpdateEmail(update: IUpdateEmail): Promise<IUser> {
 		try {
 			const user = await User.findOneAndUpdate({
 				$and: [

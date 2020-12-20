@@ -3,9 +3,8 @@ import { ILogin, IRegister, IUpdateEmail } from "../types/IUserActions";
 import { IJwtPayload } from "../types/IJWT";
 import { sign } from "../services/jwt";
 import jwt from "../middleware/jwt";
-import User from "../repositories/UserRepository";
+import user from "../repositories/UserRepository";
 
-const user = new User();
 const router = new Router({ prefix: "/user" });
 
 router.post("/login", async (ctx, next) => {
