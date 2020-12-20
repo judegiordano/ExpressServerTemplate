@@ -38,7 +38,7 @@ app.use(ratelimit({
 		reset: "Rate-Limit-Reset",
 		total: "Rate-Limit-Total"
 	},
-	max: 15,
+	max: 30,
 	disableHeader: false
 }));
 app.use(cors());
