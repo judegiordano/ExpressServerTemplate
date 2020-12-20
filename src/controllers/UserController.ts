@@ -1,7 +1,7 @@
 import Router from "koa-router";
 import { ILogin, IRegister, IUpdateEmail } from "../types/IUserActions";
 import { IJwtPayload } from "../types/IJWT";
-import { sign } from "../services/jwt";
+import { sign } from "../helpers/jwt";
 import jwt from "../middleware/jwt";
 import user from "../repositories/UserRepository";
 

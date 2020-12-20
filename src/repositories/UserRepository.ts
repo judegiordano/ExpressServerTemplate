@@ -1,7 +1,7 @@
 import User from "../models/UserModel";
 import IUser from "../types/entities/IUser";
 import { ILogin, IRegister, IUpdateEmail } from "../types/IUserActions";
-import { compare, hash } from "../services/password";
+import { compare, hash } from "../helpers/password";
 
 export default class UserRepository {
 

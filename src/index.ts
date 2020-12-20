@@ -1,9 +1,9 @@
 import os from "os";
 import cluster from "cluster";
 import config from "./services/config";
-import log from "./services/logger";
+import log from "./helpers/logger";
 import app from "./services/server";
-import connect from "./services/database";
+import connect from "./helpers/database";
 
 const start = async (): Promise<void> => {
 	try {

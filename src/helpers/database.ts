@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import config from "./config";
+import config from "../services/config";
 import log from "./logger";
 
 const DB_URL = config.CONNECTION_STRING;

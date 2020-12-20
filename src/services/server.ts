@@ -7,7 +7,7 @@ import json from "koa-json";
 import cors from "koa-cors";
 import helmet from "koa-helmet";
 
-import log from "../services/logger";
+import log from "../helpers/logger";
 import router from "../controllers";
 import { IErr } from "../types/IRoute";
 

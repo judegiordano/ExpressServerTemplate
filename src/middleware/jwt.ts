@@ -1,5 +1,5 @@
 import Koa from "koa";
-import { verify } from "../services/jwt";
+import { verify } from "../helpers/jwt";
 
 const authenticateToken = async (ctx: Koa.Context, next: Koa.Next) => {
 	const authHeader = ctx.header["authorization"];
